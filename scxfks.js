@@ -1,5 +1,5 @@
 // ==UserScript==
-// @name        四川省国家工作人员学法考法平台 - scxfks.com
+// @name        四川学法考法平台 - scxfks.com
 // @namespace   Violentmonkey Scripts
 // @match       *://xxpt.scxfks.com/*
 // @grant       GM_getValue
