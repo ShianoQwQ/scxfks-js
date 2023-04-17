@@ -4,7 +4,7 @@
 // @match       *://xxpt.scxfks.com/*
 // @grant       GM_getValue
 // @grant       GM_setValue
-// @version     1.04
+// @version     1.05
 // @author      ShianoQwQ
 // @description 2023/4/13 Original author:cutesun(greasyfork.org/zh-CN/users/888826-cutesun)
 // @license MIT
@@ -29,7 +29,7 @@
     if (location.href.indexOf("xxpt.scxfks.com/study/course/") != -1 && location.href.indexOf("chapter") == -1 && GM_getValue("limit", 0) == 0) {
         const chapterElement = document.querySelectorAll("li.c_item div")
         // 选择课程li下的div元素，每两个元素对应一个章节课程，
-        var divIndex = 0;
+        let divIndex = 0;
         var intervalCourse = setInterval(() => {
             // 遍历每个章节
             console.log(divIndex);
@@ -74,14 +74,20 @@
     }
 
     if (location.href == "http://xxpt.scxfks.com/study/index") {
-        var intervalIndex = setInterval(() => {
-            const limit = document.querySelector("#indexkejian > a")
-            if (limit != null) {
-                console.log(limit.innerHTML)
-                limit.click();
+        let courseList = document.querySelectorAll('ul.film_focus_nav > li');
+        let courseIndex = 0;
+        let intervalIndex = setInterval(() => {
+            const course = document.querySelectorAll("div.linebar:not([style='width: 100%;'])");
+            console.log(course)
+            if (course.length > 0) {
+                console.log(course[0]);
+                course[0].parentElement.parentElement.lastChild.click();
                 clearInterval(intervalIndex);
             }
-        }, 100)
+            courseIndex += 1;
+            if (courseIndex >= courseList.length) { clearInterval(intervalIndex); }
+            courseList[courseIndex].click();
+        }, 2000);
     }
 
     if (location.href.indexOf("xxpt.scxfks.com/study/course/") != -1 && GM_getValue("limit", 1) == 1) {
