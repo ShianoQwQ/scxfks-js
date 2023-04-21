@@ -4,9 +4,9 @@
 // @match       *://xxpt.scxfks.com/*
 // @grant       GM_getValue
 // @grant       GM_setValue
-// @version     1.06
+// @version     1.07
 // @author      ShianoQwQ
-// @description 2023/4/13 Original author:cutesun(greasyfork.org/zh-CN/users/888826-cutesun)
+// @description 2023/4/21 Original author:cutesun(greasyfork.org/zh-CN/users/888826-cutesun)
 // @license MIT
 // ==/UserScript==
 (function () {
@@ -87,7 +87,7 @@
             courseIndex += 1;
             if (courseIndex >= courseList.length) { clearInterval(intervalIndex); }
             courseList[courseIndex].click();
-        }, 3000);
+        }, 4500);
     }
 
     if (location.href.indexOf("xxpt.scxfks.com/study/course/") != -1 && GM_getValue("limit", 1) == 1) {
